@@ -2,9 +2,25 @@ $(document).ready(function () {
     $(".dropdown-trigger").dropdown({
         constrainWidth: false
     });
+    $('.modal').modal();
 });
-
+// var instance = M.Modal.getInstance(elem);
 var answers = ["", "", "", "", ""];
+// var q = require("data/friends.js");
+// var u = document.createElement("script");
+// u.src = "data/friends.js";
+// document.getElementsByTagName("head")[0].append(u);
+// console.log(q[0])
+function match() {
+    console.log(answers);
+    var r = 0;
+    for (e = 0; e < answers.length; e++) {
+        var t = parseInt(answers[e]);
+        r = r + t;
+    };
+    console.log(r);
+    find(r);
+};
 
 //dropdown1
 $(document).on("click", "#q1", function () {
@@ -76,6 +92,22 @@ $(document).on("click", "#t4", function () {
     answers[4] = 4;
 });
 
-$(document).on("click", function() {
-    console.log(answers)
+$(document).on("click", function () {
+    console.log(answers);
 })
+
+$(document).on("click", "#0modal", function () {
+    for (var w = 0; w < answers.length; w++) {
+        if (answers[w] === "") {
+            return;
+        }
+    }
+    match();
+})
+
+function find(i) {
+    $.get("/api/friends/" + i, function (data) {
+        // log the data to our console
+        console.log(data);
+    });
+}

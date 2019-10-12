@@ -5,8 +5,8 @@ var PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'app/public')));
-// app.use(express.static(path.join(__dirname, 'app/routing')));
+// app.use(express.static("app"));
+app.use(express.static(path.join(__dirname, 'app/')));
 
 require("./app/routing/apiRoutes.js")(app);
 require("./app/routing/htmlRoutes.js")(app);

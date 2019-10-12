@@ -9,7 +9,7 @@ module.exports = function (app) {
         res.sendFile(path.join(__dirname, "../public/survey.html"));
     });
 
-    app.get("/survey/answer", function (req, res) {
+    app.get("/answer", function (req, res) {
         res.sendFile(path.join(__dirname, "../public/answer.html"));
     });
 }
